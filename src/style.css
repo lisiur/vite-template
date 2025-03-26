@@ -1,79 +1,176 @@
-:root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
+@import "tailwindcss";
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+:root[data-theme="light"] {
+    color-scheme: light;
+    --app-color-surface: var(--color-gray-50);
+    --app-color-on-surface: var(--color-gray-950);
+
+    --app-color-background: var(--color-white);
+    --app-color-on-background: var(--color-gray-950);
+
+    --app-color-overlay: var(--color-gray-50);
+
+    --app-color-modal: var(--color-white);
+    --app-color-on-modal: var(--color-gray-500);
+
+    --app-color-inactive: var(--color-gray-200);
+    --app-color-on-inactive: var(--color-gray-500);
+
+    --app-color-primary: var(--color-blue-700);
+    --app-color-primary-hover: var(--color-blue-800);
+    --app-color-primary-ring: var(--color-blue-300);
+    --app-color-on-primary: var(--color-white);
+
+    --app-color-secondary: var(--color-white);
+    --app-color-secondary-hover: var(--color-gray-100);
+    --app-color-secondary-ring: var(--color-gray-100);
+    --app-color-on-secondary: var(--color-gray-900);
+
+    --app-color-success: var(--color-green-500);
+    --app-color-success-hover: var(--color-green-600);
+    --app-color-success-ring: var(--color-green-100);
+    --app-color-success-overlay: var(--color-green-50);
+    --app-color-on-success: var(--color-gray-900);
+
+    --app-color-warning: var(--color-yellow-500);
+    --app-color-warning-hover: var(--color-green-600);
+    --app-color-warning-ring: var(--color-yellow-100);
+    --app-color-warning-overlay: var(--color-yellow-50);
+    --app-color-on-warning: var(--color-gray-900);
+
+    --app-color-danger: var(--color-red-500);
+    --app-color-danger-hover: var(--color-red-600);
+    --app-color-danger-ring: var(--color-red-100);
+    --app-color-danger-overlay: var(--color-red-50);
+    --app-color-on-danger: var(--color-gray-900);
+
+    --app-color-info: var(--color-blue-500);
+    --app-color-info-hover: var(--color-blue-600);
+    --app-color-info-ring: var(--color-blue-100);
+    --app-color-info-overlay: var(--color-blue-50);
+    --app-color-on-info: var(--color-gray-900);
+
+    --app-color-divider: var(--color-gray-200);
+    --app-color-border: var(--color-gray-200);
+    --app-color-placeholder: var(--color-gray-500);
 }
 
-a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --app-color-surface: var(--color-gray-50);
+    --app-color-on-surface: var(--color-white);
+
+    --app-color-background: var(--color-zinc-900);
+    --app-color-on-background: var(--color-white);
+
+    --app-color-overlay: var(--color-gray-700);
+
+    --app-color-modal: var(--color-gray-700);
+    --app-color-on-modal: var(--color-gray-400);
+
+    --app-color-inactive: var(--color-gray-700);
+    --app-color-on-inactive: var(--color-gray-400);
+
+    --app-color-primary: var(--color-blue-500);
+    --app-color-primary-hover: var(--color-blue-700);
+    --app-color-primary-ring: var(--color-blue-800);
+
+    --app-color-secondary: var(--color-gray-800);
+    --app-color-secondary-hover: var(--color-gray-700);
+    --app-color-secondary-ring: var(--color-gray-700);
+    --app-color-on-secondary: var(--color-gray-400);
+
+    --app-color-success: var(--color-green-500);
+    --app-color-success-hover: var(--color-green-600);
+    --app-color-success-ring: var(--color-green-700);
+    --app-color-success-overlay: var(--color-green-50);
+    --app-color-on-success: var(--color-gray-400);
+
+    --app-color-warning: var(--color-yellow-500);
+    --app-color-warning-hover: var(--color-yellow-600);
+    --app-color-warning-ring: var(--color-yellow-700);
+    --app-color-warning-overlay: var(--color-yellow-50);
+    --app-color-on-warning: var(--color-gray-400);
+
+    --app-color-danger: var(--color-red-500);
+    --app-color-danger-hover: var(--color-red-600);
+    --app-color-danger-ring: var(--color-red-700);
+    --app-color-danger-overlay: var(--color-red-500);
+    --app-color-on-danger: var(--color-gray-400);
+
+    --app-color-info: var(--color-blue-500);
+    --app-color-info-hover: var(--color-blue-600);
+    --app-color-info-ring: var(--color-blue-700);
+    --app-color-info-overlay: var(--color-blue-500);
+    --app-color-on-info: var(--color-gray-400);
+
+    --app-color-divider: var(--color-gray-600);
+    --app-color-border: var(--color-gray-600);
+    --app-color-placeholder: var(--color-gray-500);
 }
-a:hover {
-    color: #535bf2;
+
+@theme static {
+    --color-surface: var(--app-color-surface);
+    --color-on-surface: var(--app-color-on-surface);
+
+    --color-background: var(--app-color-background);
+    --color-on-background: var(--app-color-on-background);
+
+    --color-overlay: var(--app-color-overlay);
+
+    --color-modal: var(--app-color-modal);
+    --color-on-modal: var(--app-color-on-modal);
+
+    --color-inactive: var(--app-color-inactive);
+    --color-on-inactive: var(--app-color-on-inactive);
+
+    --color-primary: var(--app-color-primary);
+    --color-primary-hover: var(--app-color-primary-hover);
+    --color-primary-ring: var(--app-color-primary-ring);
+    --color-on-primary: var(--app-color-on-primary);
+
+    --color-secondary: var(--app-color-secondary);
+    --color-secondary-hover: var(--app-color-secondary-hover);
+    --color-secondary-ring: var(--app-color-secondary-ring);
+    --color-on-secondary: var(--app-color-on-secondary);
+
+    --color-success: var(--app-color-success);
+    --color-success-hover: var(--app-color-success-hover);
+    --color-success-ring: var(--app-color-success-ring);
+    --color-success-overlay: var(--app-color-success-overlay);
+    --color-on-success: var(--app-color-on-success);
+
+    --color-warning: var(--app-color-warning);
+    --color-warning-hover: var(--app-color-warning-hover);
+    --color-warning-ring: var(--app-color-warning-ring);
+    --color-warning-overlay: var(--app-color-warning-overlay);
+    --color-on-warning: var(--app-color-on-warning);
+
+    --color-danger: var(--app-color-danger);
+    --color-danger-hover: var(--app-color-danger-hover);
+    --color-danger-ring: var(--app-color-danger-ring);
+    --color-danger-overlay: var(--app-color-danger-overlay);
+    --color-on-danger: var(--app-color-on-danger);
+
+    --color-info: var(--app-color-info);
+    --color-info-hover: var(--app-color-info-hover);
+    --color-info-ring: var(--app-color-info-ring);
+    --color-info-overlay: var(--app-color-info-overlay);
+    --color-on-info: var(--app-color-on-info);
+
+    --color-divider: var(--app-color-divider);
+    --color-border: var(--app-color-border);
+    --color-placeholder: var(--app-color-placeholder);
 }
 
 body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
+    @apply text-on-background;
 }
 
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-}
-
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-}
-button:hover {
-    border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-    padding: 2em;
-}
-
+html,
+body,
 #app {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #ffffff;
-    }
-    a:hover {
-        color: #747bff;
-    }
-    button {
-        background-color: #f9f9f9;
-    }
+    @apply h-full overflow-hidden;
 }

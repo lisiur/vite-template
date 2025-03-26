@@ -29,11 +29,17 @@
         ]
     },
     "dependencies": {
-        "vue": "^3.5.13"
+        "@tailwindcss/vite": "^4.0.17",
+        "tailwindcss": "^4.0.17",
+        "vue": "^3.5.13",
+        "vue-i18n": "^11.1.2",
+        "vue-router": "^4.5.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.23.0",
+        "@tailwindcss/language-server": "^0.14.11",
         "@vitejs/plugin-vue": "^5.2.1",
+        "@vitejs/plugin-vue-jsx": "^4.1.2",
         "@vue/language-server": "^2.2.8",
         "@vue/tsconfig": "^0.7.0",
         "commitizen": "^4.3.1",
@@ -48,6 +54,7 @@
         "typescript": "~5.7.2",
         "typescript-eslint": "^8.28.0",
         "vite": "^6.2.0",
+        "vscode-langservers-extracted": "^4.10.0",
         "vue-tsc": "^2.2.4"
     }
 }

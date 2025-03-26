@@ -23,4 +23,25 @@ export default defineConfig([
         languageOptions: { parserOptions: { parser: tseslint.parser } },
     },
     eslintConfigPrettier,
+    {
+        rules: {
+            "@typescript-eslint/no-explicit-any": "off",
+            "@typescript-eslint/no-this-alias": "off",
+            "@typescript-eslint/no-empty-object-type": "off",
+            "@typescript-eslint/ban-ts-comment": "off",
+            "no-unused-vars": "off",
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                {
+                    args: "after-used",
+                    argsIgnorePattern: "^_",
+                    caughtErrors: "all",
+                    caughtErrorsIgnorePattern: "^_",
+                    destructuredArrayIgnorePattern: "^_",
+                    varsIgnorePattern: "^_",
+                    ignoreRestSiblings: true,
+                },
+            ],
+        },
+    },
 ]);
