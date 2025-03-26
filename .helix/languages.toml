@@ -1,0 +1,44 @@
+[[language]]
+name = "javascript"
+formatter = { command = "npx", args = ["prettier", "--parser", "babel"] }
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+]
+
+[[language]]
+name = "typescript"
+formatter = { command = "npx", args = ["prettier", "--parser", "typescript"] }
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+]
+
+[[language]]
+name = "html"
+formatter = { command = "npx", args = ["prettier", "--parser", "html"] }
+
+[[language]]
+name = "json"
+formatter = { command = "npx", args = ["prettier", "--parser", "json"] }
+
+[[language]]
+name = "json5"
+formatter = { command = "npx", args = ["prettier", "--parser", "json5"] }
+
+[[language]]
+name = "markdown"
+formatter = { command = "npx", args = ["prettier", "--parser", "markdown"] }
+
+[[language]]
+name = "vue"
+formatter = { command = "npx", args = ["prettier", "--parser", "vue"] }
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+]
+
+[[language-server.typescript-language-server.config.plugins]]
+name = "@vue/typescript-plugin"
+location = "node_modules/@vue/language-server"
+languages = ["vue"]
