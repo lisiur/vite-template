@@ -1,11 +1,5 @@
-import type { HTMLAttributes } from "vue";
+// import type { HTMLAttributes } from "vue";
 import { MessageSchema } from "./i18n/schema";
-
-declare global {
-    namespace JSX {
-        interface IntrinsicAttributes extends HTMLAttributes {}
-    }
-}
 
 declare module "vue-i18n" {
     // define the locale messages schema

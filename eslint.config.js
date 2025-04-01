@@ -42,6 +42,7 @@ export default defineConfig([
                     ignoreRestSiblings: true,
                 },
             ],
+            "vue/multi-word-component-names": "off",
         },
     },
 ]);
