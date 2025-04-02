@@ -34,7 +34,7 @@
         "@iconify-json/radix-icons": "^1.2.2",
         "@iconify/vue": "^4.3.0",
         "@tailwindcss/vite": "^4.0.17",
-        "@types/lodash-es": "^4.17.12",
+        "@vee-validate/zod": "^4.15.0",
         "@vueuse/core": "^13.0.0",
         "async-validator": "^4.2.5",
         "class-variance-authority": "^0.7.1",
@@ -45,13 +45,18 @@
         "tailwind-merge": "^3.1.0",
         "tailwindcss": "^4.0.17",
         "tw-animate-css": "^1.2.5",
+        "vaul-vue": "^0.4.1",
+        "vee-validate": "^4.15.0",
         "vue": "^3.5.13",
         "vue-i18n": "^11.1.2",
-        "vue-router": "^4.5.0"
+        "vue-router": "^4.5.0",
+        "vue-sonner": "^1.3.0",
+        "zod": "^3.24.2"
     },
     "devDependencies": {
         "@eslint/js": "^9.23.0",
         "@tailwindcss/language-server": "^0.14.11",
+        "@types/lodash-es": "^4.17.12",
         "@vitejs/plugin-vue": "^5.2.1",
         "@vitejs/plugin-vue-jsx": "^4.1.2",
         "@vue/language-server": "^2.2.8",
