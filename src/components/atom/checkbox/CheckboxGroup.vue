@@ -1,18 +1,14 @@
 <script setup lang="ts">
+import type { CheckboxGroupRootEmits, CheckboxGroupRootProps } from "reka-ui";
 import { cn } from "@/lib/utils";
-import {
-    RadioGroupRoot,
-    type RadioGroupRootEmits,
-    type RadioGroupRootProps,
-    useForwardPropsEmits,
-} from "reka-ui";
+import { CheckboxGroupRoot, useForwardPropsEmits } from "reka-ui";
 import { computed, type HTMLAttributes } from "vue";
-import RadioGroupItem from "./RadioGroupItem.vue";
+import Checkbox from "./Checkbox.vue";
 import { Label } from "../label";
 
 const props = withDefaults(
     defineProps<
-        RadioGroupRootProps & {
+        CheckboxGroupRootProps & {
             class?: HTMLAttributes["class"];
             options?: Array<{
                 label: string;
@@ -22,11 +18,11 @@ const props = withDefaults(
         }
     >(),
     {
+        modelValue: () => [],
         options: () => [],
     },
 );
-const emits = defineEmits<RadioGroupRootEmits>();
-const slots = defineSlots();
+const emits = defineEmits<CheckboxGroupRootEmits>();
 
 const delegatedProps = computed(() => {
     const { class: _, ...delegated } = props;
@@ -38,20 +34,18 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
 </script>
 
 <template>
-    <RadioGroupRoot
-        data-slot="radio-group"
-        :class="cn('grid gap-3', props.class)"
+    <CheckboxGroupRoot
         v-bind="forwarded"
+        :class="cn(props.class, 'grid gap-3')"
     >
-        <slot v-if="slots.default" />
-        <template v-else>
-            <Label v-for="item in props.options" :key="item.label">
-                <RadioGroupItem
+        <template v-for="item in props.options" :key="item.label">
+            <Label>
+                <Checkbox
                     :value="item.value"
                     :disabled="item.disabled"
-                ></RadioGroupItem>
-                <span>{{ item.label }}</span>
+                ></Checkbox>
+                <span> {{ item.label }} </span>
             </Label>
         </template>
-    </RadioGroupRoot>
+    </CheckboxGroupRoot>
 </template>
