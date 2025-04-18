@@ -1,4 +1,4 @@
-import { defineComponent, reactive } from "vue";
+import { defineComponent, onMounted, reactive } from "vue";
 import { Button } from "@/components/atom/button";
 import { useTheme } from "./composables/theme";
 import {
@@ -6,7 +6,14 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "./components/atom/popover";
-import { Sun, Moon, Home } from "lucide-vue-next";
+import {
+    Sun,
+    Moon,
+    Home,
+    Plus,
+    MoreHorizontal,
+    Languages,
+} from "lucide-vue-next";
 import { Checkbox, CheckboxGroup } from "./components/atom/checkbox";
 import { Label } from "./components/atom/label";
 import { RadioGroup } from "./components/atom/radio-group";
@@ -24,10 +31,22 @@ import {
     SidebarMenu,
     SidebarMenuItem,
     SidebarMenuButton,
+    SidebarGroupAction,
+    SidebarMenuAction,
 } from "./components/atom/sidebar";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "./components/atom/dropdown-menu";
+import { useI18n } from "vue-i18n";
+import { setLocale, toggleLocale } from "./i18n";
 
 export default defineComponent({
     setup() {
+        onMounted(() => setLocale("en_US"));
+
         const options = [
             {
                 label: "A",
@@ -57,6 +76,10 @@ export default defineComponent({
                         link: "#theme",
                     },
                     {
+                        label: "Locale",
+                        link: "#locale",
+                    },
+                    {
                         label: "Button",
                         link: "#button",
                     },
@@ -81,6 +104,7 @@ export default defineComponent({
         ];
 
         const { toggleTheme, isLight } = useTheme();
+        const { t } = useI18n();
         return () => (
             <SidebarProvider>
                 <Sidebar>
@@ -92,6 +116,10 @@ export default defineComponent({
                                     <SidebarGroupLabel>
                                         {menuGroup.label}
                                     </SidebarGroupLabel>
+                                    <SidebarGroupAction>
+                                        <Plus />{" "}
+                                        <span class="sr-only">add</span>
+                                    </SidebarGroupAction>
                                     <SidebarGroupContent>
                                         <SidebarMenu>
                                             {menuGroup.children.map((menu) => {
@@ -107,6 +135,30 @@ export default defineComponent({
                                                                 </span>
                                                             </a>
                                                         </SidebarMenuButton>
+                                                        <DropdownMenu>
+                                                            <DropdownMenuTrigger
+                                                                asChild
+                                                            >
+                                                                <SidebarMenuAction>
+                                                                    <MoreHorizontal />
+                                                                </SidebarMenuAction>
+                                                            </DropdownMenuTrigger>
+                                                            <DropdownMenuContent
+                                                                side="right"
+                                                                align="start"
+                                                            >
+                                                                <DropdownMenuItem>
+                                                                    <span>
+                                                                        edit
+                                                                    </span>
+                                                                </DropdownMenuItem>
+                                                                <DropdownMenuItem>
+                                                                    <span>
+                                                                        delete
+                                                                    </span>
+                                                                </DropdownMenuItem>
+                                                            </DropdownMenuContent>
+                                                        </DropdownMenu>
                                                     </SidebarMenuItem>
                                                 );
                                             })}
@@ -131,6 +183,19 @@ export default defineComponent({
                                 }}
                             >
                                 {isLight.value ? <Moon /> : <Sun />}
+                            </Button>
+                        </div>
+
+                        <h2 id="locale">Locale</h2>
+                        <div class="flex gap-2">
+                            <Button
+                                variant="ghost"
+                                onClick={() => {
+                                    toggleLocale();
+                                }}
+                            >
+                                <Languages />
+                                <span>{t("common.lang")}</span>
                             </Button>
                         </div>
 

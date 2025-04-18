@@ -1,1 +1,5 @@
-export interface MessageSchema {}
+export interface MessageSchema {
+    common: {
+        lang: string;
+    };
+}
